@@ -6,9 +6,11 @@ import './styles/global.css'
 import { useState, useEffect } from 'react';
 
 export default function Home() {
+  const [username, setUsername] = useState(null);
   //Betöltéskor feladatok lekérése
   const [todos, setTodos] = useState(() => {
     const storedTodos = localStorage.getItem('todos');
+    setUsername(localStorage.getItem('username'))
     return storedTodos ? JSON.parse(storedTodos) : [];
   });
 
@@ -65,16 +67,28 @@ export default function Home() {
   });
 
 
-
+  const logout = () => {
+    localStorage.removeItem('username');
+    setUsername(null)
+  };
 
   return (
     <main>
       <header className="header">
         <nav className="menu">
           <Link href="/">Feladataim</Link>
-          <Link href="/bejelentkezes">Bejelntkezés</Link>
-          <Link href="/regisztracio">Regisztráció</Link>
+          {username == null && (
+            <><Link href="/bejelentkezes">Bejelentkezés</Link><Link href="/regisztracio">Regisztráció</Link></>
+          )}
+          {username && (
+            <><Link href="" onClick={() => logout()}>Kijelentkezés</Link></>
+          )}
         </nav>
+        <div className="">
+        {username && (
+          <span className="">Belépve mint, {username}</span>
+        )}
+        </div>
       </header>
       <section className="hero">
         <h1 className=""><center>To-Do feldatkezelő alkalmazás</center></h1>
