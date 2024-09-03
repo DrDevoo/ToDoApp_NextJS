@@ -12,8 +12,26 @@
     border-radius: 10px;
     padding: 30px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+}
+.todotop{
+    display: flex;
     justify-content: space-between;
 }
+.todobott{
+    opacity: 0.8;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+}
+.buttons{
+    display: flex;
+    gap: 10px;
+}
+
 
 .todolist{
     width: 100%;
@@ -25,7 +43,8 @@
 
 .addtodo{
     cursor: pointer;
-    background-color: rgb(52, 181, 255);
+    background-color: rgb(246, 76, 46);
+    box-shadow: 0px 0px 10px red;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,9 +54,34 @@
     height: 50px;
     font-size: 30pt;
     line-height: 0;
+    margin-bottom: 10px;
 }
+
+.addtodobox{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
 .addtodobox input{
     padding: 10px;
     border-radius: 10px;
     border: 1px solid white;
+}
+
+
+.sorterbox{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+}
+
+.searchbox{
+
+}
+
+.sortbox{
+
 }
