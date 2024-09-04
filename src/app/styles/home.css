@@ -88,4 +88,24 @@ body{
 .op{
     opacity: 0.5;
 }
+
+.iconb{
+    cursor: pointer;
+    background-color: #ecedf6;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    margin-left: 10px;
+    border-radius: 6px;
+}
+
 {}
+
+
+@media only screen and (max-width: 600px) {
+    .todolist {
+            width: 90%;
+    }
+}

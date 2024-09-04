@@ -213,12 +213,12 @@ export default function Home() {
               </div>
             </div>
             <div className='buttonsbox'>
-              <div className='trashb'>
+              <div className='iconb'>
                 <span class="material-symbols-outlined" onClick={() => deleteTodo(todo.id)}>
                 delete
                 </span>
               </div>
-                <div className='editb'>
+                <div className='iconb'>
                   <span class="material-symbols-outlined">
                   edit
                   </span>
