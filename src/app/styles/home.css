@@ -1,87 +1,91 @@
-.hero{
-    padding: 50px 0px 50px 0px;
+body{
+    background-color: #f8f8ff;
 }
 
-.kesz{
-    opacity: 0.4;
+.hero h1{
+        color: #646681;
+
+    }
+
+.todolist{
+    width: 50%;
+    margin: auto;
+}
+
+.sorterbox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.addbox button{
+    cursor: pointer;
+    padding: 10px 5px 10px 5px;
+    border: none;
+    background-color: #6370f0;
+    border-radius: 10px;
+    color: white;
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.listBox{
+    margin-top: 10px;
+    background-color: #ecedf6;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.notask{
+    text-align: center;
+    color: rgba(255, 255, 255, 0.592);
 }
 
 .todo{
-    width: 50%;
-    background-color: rgb(60, 60, 60);
+    padding: 10px;
+    background-color: white;
     border-radius: 10px;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
-}
-.todotop{
     display: flex;
     justify-content: space-between;
 }
-.todobott{
-    opacity: 0.8;
+
+.textsbox{
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    justify-content: space-between;
-}
-.buttons{
-    display: flex;
-    gap: 10px;
 }
 
-
-.todolist{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-}
-
-.addtodo{
-    cursor: pointer;
-    background-color: rgb(246, 76, 46);
-    box-shadow: 0px 0px 10px red;
+.ch_texts_box{
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 20px;
-    border-radius: 500px;
-    width: 50px;
-    height: 50px;
-    font-size: 30pt;
-    line-height: 0;
-    margin-bottom: 10px;
 }
+
+.buttonsbox{
+    display: flex;
+    align-items: center;
+}
+
+
 
 .addtodobox{
+    background-color: #ecedf6;
+    padding: 1rem;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
     gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-.addtodobox input{
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid white;
+.check input{
+    height: 50px;
+    width: 50px;
 }
 
-
-.sorterbox{
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    gap: 3rem;
+.op{
+    opacity: 0.5;
 }
-
-.searchbox{
-
-}
-
-.sortbox{
-
-}
+{}

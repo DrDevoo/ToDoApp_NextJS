@@ -1,8 +1,10 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image'
 import './styles/home.css';
 import './styles/global.css';
+import './styles/checkbox.css';
 
 export default function Home() {
   const [username, setUsername] = useState(null);
@@ -174,6 +176,9 @@ export default function Home() {
       </section>
       <section className="todolist">
         <div className="sorterbox">
+          <div className="addbox">
+            <button onClick={() => setShowAdd(!showAdd)}>Új feladat</button>
+          </div>
           <div className="searchbox">
             <input
               type="search"
@@ -183,7 +188,6 @@ export default function Home() {
             />
           </div>
           <div className="sortbox">
-            <span>Rendezés: </span>
             <select onChange={(e) => setHtsort(e.target.value)}>
               <option value="completed">alap</option>
               <option value="fontontossag">fontosság</option>
@@ -191,37 +195,43 @@ export default function Home() {
             </select>
           </div>
         </div>
-
-        {sortedTodos.map((todo) => (
+       <div className='listBox'>
+          {sortedTodos.map((todo) => (
           <div key={todo.id} className={todo.completed ? 'kesz todo' : 'todo'}>
-            <div className="todotop">
-              <span>{todo.text}</span>
-              <div className="buttons">
-                <input
+            <div className='ch_texts_box'>
+              <div className='check'>
+                  <input
+                  id="_checkbox"
                   type="checkbox"
                   checked={todo.completed}
                   onChange={() => toggleTodo(todo.id)}
-                />
-                <button onClick={() => deleteTodo(todo.id)}>törlés</button>
+                  />
+              </div>
+              <div className='textsbox'>
+                <span>{todo.text}</span>
+                <span className='op'>{todo.hatarido} - {todo.fontossag}</span>
               </div>
             </div>
-            <div className="todobott">
-              {todo.hatarido && (
-                <span>Határidő: {todo.hatarido}</span>
-              )}
-              <span>Fontosság: {todo.fontossag}</span>
+            <div className='buttonsbox'>
+              <div className='trashb'>
+                <span class="material-symbols-outlined" onClick={() => deleteTodo(todo.id)}>
+                delete
+                </span>
+              </div>
+                <div className='editb'>
+                  <span class="material-symbols-outlined">
+                  edit
+                  </span>
+              </div>
             </div>
           </div>
         ))}
         {sortedTodos.length === 0 && (
-          <h4>Nincsenek feladatok...</h4>
+          <h4 className='notask'>Nincsenek feladatok...</h4>
         )}
-
-        <div className="addtodo" onClick={() => setShowAdd(!showAdd)}>
-          <span>+</span>
         </div>
         {showAdd && (
-          <div className="addtodobox todo">
+          <div className="addtodobox">
             <input
               type="text"
               placeholder="feladat neve"

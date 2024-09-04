@@ -1,22 +1,21 @@
 .header{
     height: 50px;
-    box-shadow: 0px 0px 10px red;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: rgba(0, 0, 0, 0.78);
+    background-color: #ecedf6;
 }
-.hero{
-    padding: 50px 0px 50px 0px;
-}
-body {
-background-image: url(../images/bgnew.webp);
-background-size:auto;
-background-position: center;
-background-repeat: no-repeat;
-}
+.header nav a{
+        color: #646681;
+        text-decoration: none;
+    }
+body{
+        margin: 0;
+        padding: 0;
+    }
 
 .menu{
     display: flex;
@@ -28,7 +27,7 @@ input{
     border: 1px solid white;
     padding: 5px;
     border-radius: 10px;
-    background-color: rgba(0, 0, 0, 0.436);
+    background-color: rgba(207, 207, 207, 0.436);
 }
 
 option{
@@ -37,3 +36,14 @@ option{
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.436);
 }
+
+button{
+        cursor: pointer;
+        padding: 10px 5px 10px 5px;
+        border: none;
+        background-color: #6370f0;
+        border-radius: 10px;
+        color: white;
+        font-size: 12pt;
+        font-weight: bold;
+    }
