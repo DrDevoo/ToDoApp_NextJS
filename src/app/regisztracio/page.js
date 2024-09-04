@@ -4,8 +4,10 @@ import Image from "next/image";
 import Link from 'next/link';
 import '../styles/global.css'
 import '../styles/account.css'
+import { useRouter } from 'next/navigation'
 
 export default function Regisztracio() {
+  const router = useRouter()
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [password2, setPassword2] = useState('');
@@ -26,6 +28,7 @@ export default function Regisztracio() {
   
         if (response.ok) {
           setMessage('Sikeres regisztráció!');
+          router.push('/bejelentkezes')
         } else {
           setMessage(data.message || 'Sikertelen regisztráció!');
         }

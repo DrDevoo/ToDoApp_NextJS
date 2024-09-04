@@ -26,9 +26,10 @@ export default function Bejelentkezes() {
 
       if (response.ok) {
         setMessage('Sikeres belépdés!');
-        console.log(data.username)
         var usern = data.username
+        var userid = data._id
         localStorage.setItem('username', usern);
+        localStorage.setItem('usernameID', userid);
         router.push('/')
       } else {
         setMessage(data.message || 'Sikertelen belépés!');
