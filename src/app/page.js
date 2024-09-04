@@ -145,7 +145,7 @@ export default function Home() {
   const logout = () => {
     localStorage.removeItem('username');
     setUsername(null);
-    setTodos(null);
+    setTodos([]);
   };
 
   return (
