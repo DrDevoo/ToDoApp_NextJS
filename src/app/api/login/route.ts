@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     return new Response(JSON.stringify({ done: true, username: user.username, _id: user._id }), { status: 200 });
 
   } catch (error) {
-    console.error("Error in POST handler:", error);
+    console.error("Hiba:", error);
     return new Response(JSON.stringify({ done: false, error: error.message }), { status: 500 });
   }
 }

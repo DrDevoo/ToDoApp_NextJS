@@ -111,14 +111,13 @@ export default function Home() {
   };
 
   const deleteTodo = async (id) => {
+    const updatedTodos = todos.filter((todo) => todo.id !== id);
+    setTodos(updatedTodos);
+
     if (localStorage.getItem('username') === null) {
-      const updatedTodos = todos.filter((todo) => todo.id !== id);
-      setTodos(updatedTodos);
       localStorage.setItem('todos', JSON.stringify(updatedTodos));
     } else {
-      const updatedTodos = todos.filter((todo) => todo.id !== id);
-      setTodos(updatedTodos);
-      updateTodosOnServer()
+      await updateTodosOnServer()
     }
   };
   
@@ -209,7 +208,11 @@ export default function Home() {
               </div>
               <div className='textsbox'>
                 <span>{todo.text}</span>
-                <span className='op'>{todo.hatarido} - {todo.fontossag}</span>
+                {todo.hatarido ? (
+                  <span className='op'>{new Intl.DateTimeFormat('hu-HU', { year: 'numeric', month: 'long', day: 'numeric' }).format(new Date(todo.hatarido))}</span>
+                ) : (
+                  <span className='op'>Nincs határidő</span>
+                )}
               </div>
             </div>
             <div className='buttonsbox'>
@@ -218,10 +221,21 @@ export default function Home() {
                 delete
                 </span>
               </div>
-                <div className='iconb'>
+              <div className='iconb'>
                   <span class="material-symbols-outlined">
                   edit
                   </span>
+              </div>
+              <div className='iconb'>
+              {todo.fontossag === 0 ? (
+                  <span class="color blue"></span>
+              ) : todo.fontossag === 1 ? (
+                <span class="color yellow"></span>
+              ) : todo.fontossag === 2 ? (
+                <span class="color red"></span>
+              ) : (
+                <span class="color blue"></span>
+              )}
               </div>
             </div>
           </div>

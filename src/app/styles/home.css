@@ -81,8 +81,9 @@ body{
 }
 
 .check input{
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
 }
 
 .op{
@@ -101,11 +102,27 @@ body{
     border-radius: 6px;
 }
 
-{}
-
+.kesz{
+    opacity: 0.6;
+}
 
 @media only screen and (max-width: 600px) {
     .todolist {
             width: 90%;
     }
+}
+
+.color{
+    height: 24px;
+    width: 24px;
+    border-radius: 4px;
+}
+.red{
+    background-color: rgb(144, 55, 55);
+}
+.yellow {
+    background-color: rgb(211, 192, 84);
+}
+.blue{
+    background-color: rgb(110, 185, 190);
 }
