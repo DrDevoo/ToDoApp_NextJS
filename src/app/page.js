@@ -10,11 +10,18 @@ export default function Home() {
   const [username, setUsername] = useState(null);
   const [todos, setTodos] = useState([]);
   const [showAdd, setShowAdd] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
   const [newTodo, setNewTodo] = useState("");
   const [fontossag, setFontossag] = useState(0);
   const [hatarido, setHatarido] = useState(null);
   const [htsort, setHtsort] = useState("completed");
   const [kereso, setKereso] = useState('');
+  const [editedTodo, setEditedTodo] = useState('');
+  const [newText, setNewText] = useState("");
+  const [newFontossag, setNewFontossag] = useState(editedTodo?.fontossag || 0);
+  const [newHatarido, setNewHatarido] = useState(editedTodo?.hatarido || null);
+  
+
 
   async function updateTodosOnServer() {
     try {
@@ -120,7 +127,27 @@ export default function Home() {
       await updateTodosOnServer()
     }
   };
-  
+  const editTodo = async (id) => {
+    const todoToEdit = todos.find((todo) => todo.id === id);
+    console.log(todoToEdit)
+    setEditedTodo(todoToEdit)
+    setShowEdit(true)
+  };
+  const updateEditTodo = async (id) => {
+    const updatedTodos = todos.map((todo) =>
+      todo.id === editedTodo.id
+        ? { ...todo, text: newText, fontossag: newFontossag, hatarido: newHatarido }
+        : todo
+    );
+    setTodos(updatedTodos);
+    if (localStorage.getItem('username') === null) {
+      localStorage.setItem('todos', JSON.stringify(updatedTodos));
+    } else {
+      await updateTodosOnServer()
+    }
+
+    setShowEdit(false)
+  };
 
   const filteredTodos = todos.filter((todo) =>
     todo.text.toLowerCase().includes(kereso.toLowerCase())
@@ -222,7 +249,7 @@ export default function Home() {
                 </span>
               </div>
               <div className='iconb'>
-                  <span class="material-symbols-outlined">
+                  <span class="material-symbols-outlined" onClick={() => editTodo(todo.id)}>
                   edit
                   </span>
               </div>
@@ -270,6 +297,34 @@ export default function Home() {
             <button onClick={addTodo}>
               Mentés
             </button>
+          </div>
+        )}
+        {showEdit && (
+          <div className="addtodobox">
+            <input
+              type="text"
+              placeholder="feladat neve"
+              onChange={(e) => setNewText(e.target.value)}
+              value={newText} 
+            />
+            <label htmlFor="fontossag">Fontosság</label>
+            <select
+              name="fontossag"
+              value={newFontossag}
+              onChange={(e) => setNewFontossag(parseInt(e.target.value, 10))}
+            >
+              <option value="0">Nem nagyon fontos</option>
+              <option value="1">Közepesen fontos</option>
+              <option value="2">Nagyon fontos</option>
+            </select>
+            <label htmlFor="hatarido">Határidő</label>
+            <input
+              type="date"
+              value={newHatarido || ''} 
+              name="hatarido"
+              onChange={(e) => setNewHatarido(e.target.value)}
+            />
+            <button onClick={updateEditTodo}>Frissítés</button>
           </div>
         )}
       </section>
